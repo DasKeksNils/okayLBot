@@ -24,10 +24,11 @@ def is_bot_owner(self, user):
 def is_permited(self, user):
     file = open("lib/data/permit.json")
     data = json.load(file)
-    return user["name"] in data or user["id"] == self.channel_id
+    return user["name"].lower() in data or user["id"] == self.channel_id
 
 
 def is_admin(self, user):
     file = open("lib/data/admin.json")
     data = json.load(file)
-    return user["name"] in data or user["id"] == self.channel_id
+    print(data)
+    return user["name"].lower() in data or user["id"] == self.channel_id

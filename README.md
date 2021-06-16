@@ -9,7 +9,7 @@
 
  0 -All Users
 
- 0,5 - All Users; cmd only avalible in #daskeksnils
+ 0,5 - All Users; cmd only avalible in #okayLBot
 
  1 - Mod in the channel
 
@@ -19,7 +19,7 @@
 
  4 - Permited User
 
- 5 - Bot Owner
+ 5 - Bot Owner - includes admins
 
 ------
 
@@ -30,24 +30,28 @@
 |cock | / | user | 0  | / | / |
 |color | / | / | 0 | / | still working on it |
 |commands   |/   |user   |0   |/   | / |
-|followage  |/   |user or channel, user   |0   |/   | / |
+|followage  |/   |user or channel, user   | 0   |/   | testing |
 |game   |/   |user   |0   |/   | / |
 |github | / | /     | 0   | /  | / |
+|hydrate | pingme/remping | / | 0 | / | channel must be added |
+|hydrate | add-/remmychannel | / | 1 | / | / |
 |ispartner | / | channel | 0 | / | / |
 |join   |channel   |/   |2   |/   | / |
 |kock | / | user | 0 | / | only in #me_kc |
 |massping | text | / | 3 | / | / |
 |me   |wahrheit/pflicht/drunk   |/   |4   |/   | only in #me_kc |
-|module   |module   |/   |2   |/   | / |
+|module   |module   |/   |4   |/   | / |
 |onlyfans   |/   |user   |0   |/   | / |
 |part   |channel   |/   |2   |/   | / |
 |permit   |add/remove/list, user   |/   |5   |/   | / |
 |ping   |/   |/   |1   |/   | / |
 |pyramid   |number, text   |/   |1   |/   | / |
+|say | channel, text | / | 5 | / | / |
 |seteditgame | game | / | 4 | / | bot needs editor; sets raw input|
 |setgame | game | / | 1 | / | bot needs editor|
 |settitle | title | / | 1 | / | bot needs editor|
 |spam   |number, text   |/   |1   |/   | / |
+|subage | / | user/ channel, user | 5 | / | testing |
 |test |/ | / | 4 | 15 | testing cooldown |
 |title   |/   |user   |0   |/   | / |
 |vanish| / | / | 0 | / | / |

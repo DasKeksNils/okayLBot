@@ -25,6 +25,7 @@ class Bot(SingleServerIRCBot):
         self.CLIENT_ID = setup.startup()["client_id"]
         self.TOKEN = setup.startup()["token"]
         self.SETUP = setup
+        self.START = False
 
         url = f"https://api.twitch.tv/kraken/users?login={self.USERNAME}"
         headers = {"Client-ID": self.CLIENT_ID, "Accept": "application/vnd.twitchtv.v5+json"}
@@ -48,9 +49,10 @@ class Bot(SingleServerIRCBot):
             print(f"{timestamp()} [JOIN] {channel}")
             log.info(f"{timestamp()} [JOIN] {channel}")
         log.info("")
-        # t = Thread(hydrate(self))
-        # t.start()
-        # print("test")
+        if self.START is False:
+            t = Thread(target=hydrate, args=[self])
+            t.start()
+            self.START = True
 
     def on_pubmsg(self, cxn, event):
         tags = {kvpair["key"]: kvpair["value"] for kvpair in event.tags}
@@ -66,23 +68,33 @@ class Bot(SingleServerIRCBot):
     def send_message(self, message, channel):
         self.connection.privmsg(channel, message)
 
+    # def usernotis(self, user, channel):
+        # self.connection.send_items('USERNOTIS', str(channel), ':', str(user["name"]))
+
 
 def settings(module):
     return setup.settings()[module] == "True"
 
 
 def hydrate(self):
-    next_ping = time.time()
+    file = open("lib/data/hydrate.json", "r+")
+    data = json.load(file)
+    next_ping = data["next_ping"]
     while True:
+        time.sleep(5)
         if settings("hydrate"):
+            file = open("lib/data/hydrate.json", "r+")
+            data = json.load(file)
             if time.time() >= next_ping:
-                file = open("lib/data/hydrate.json", "r")
-                data = json.load(file)
                 channels = data["channels"]
                 pings = data["pings"]
                 for channel in channels:
-                    self.send_message("test FeelsOkayMan " + ", ".join(pings[channel]), channel)
+                    self.send_message("FeelsOkayMan Stay Hydrated Chat DinkDank " + " ".join(pings[channel]), channel)
                 next_ping = time.time() + 1800
+                data["next_ping"] = next_ping
+                file.seek(0)
+                file.truncate()
+                json.dump(data, file, indent=4)
 
 
 if __name__ == "__main__":

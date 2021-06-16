@@ -2,7 +2,7 @@ import json
 
 
 def module_cmd(self, user, channel, args):
-    modules = ["me_kc", "timeout", "pingpong", "joy", "cookies"]
+    modules = ["me_kc", "timeout", "pingpong", "joy", "cookies", "hydrate"]
     try:
         module = args[0]
     except IndexError:
@@ -22,10 +22,12 @@ def module_cmd(self, user, channel, args):
 
     file = open("lib/data/settings.json", "r+")
     data = json.load(file)
+
     try:
         mod = data[module.lower()]
     except KeyError:
         return
+
     if mod == "True":
         mod = "False"
         data[module.lower()] = mod

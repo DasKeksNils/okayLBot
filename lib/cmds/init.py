@@ -19,6 +19,8 @@ from lib.cmds import set
 from lib.cmds import viewers
 from lib.cmds import cock
 from lib.cmds import user_cmds
+from lib.cmds import hydrate
+from lib.cmds import say
 
 
 PREFIX = setup.startup()["PREFIX"]
@@ -32,7 +34,8 @@ class Cmd(object):
         self.next_use = time()
 
 
-def test(self, channel):
+def test(self, user, channel):
+    # print(self.usernotis(user, channel))
     self.send_message("test_wsiorjkaekomhetrh", channel["name"])
 
 
@@ -97,11 +100,11 @@ def perform(self, cxn, tags, user, channel, cmd, *args):
 
     if cmd == "spam" or cmd in ALIAS["spam"]:
         if utils.is_mod(self, user, channel):
-                spam.spam_cmd(self, channel, args)
+            spam.spam_cmd(self, channel, args)
 
     if cmd == "permit" or cmd in ALIAS["permit"]:
         if utils.is_admin(self, user):
-                permit.cmd(self, user, channel, args)
+            permit.cmd(self, user, channel, args)
 
     if cmd == "pyramid" or cmd in ALIAS["pyramid"]:
         if utils.is_mod(self, user, channel):
@@ -130,7 +133,7 @@ def perform(self, cxn, tags, user, channel, cmd, *args):
 
     if cmd == "setgame" or cmd in ALIAS["setgame"]:
         if utils.is_mod(self, user, channel):
-                set.game(self, user, channel, args)
+            set.game(self, user, channel, args)
 
     if cmd == "cock" or cmd in ALIAS["cock"]:
         cock.cmd(self, user, channel, args)
@@ -149,53 +152,17 @@ def perform(self, cxn, tags, user, channel, cmd, *args):
 
     if cmd == "massping" or cmd in ALIAS["massping"]:
         if utils.is_owner(self, user, channel):
-
-            resp = get(f"https://tmi.twitch.tv/group/user/{channel['name'][1:]}/chatters").json()
-            chatters = resp["chatters"]["moderators"] + resp["chatters"]["vips"] + resp["chatters"]["viewers"]
-
-            text = " ".join(args)
-            for i in chatters:
-                self.send_message(f"@{i} {text}", channel["name"])
+            spam.massping(self, channel, args)
 
     if cmd == "kock" and channel["id"] == "439341700":
         self.send_message(f"@{user['name']} the Kock is 160cm long HandsUp", channel["name"])
 
-    if cmd == "hydrate":
-        try:
-            op = args[0].lower()
-        except IndexError:
-            self.send_message("FeelsDankMan Not Enough Arguments.", channel["name"])
-            return
+    if cmd == "say" or cmd in ALIAS["say"]:
+        if utils.is_admin(self, user):
+            say.cmd(self, channel, args)
 
-        file = open("lib/data/hydrate.json", "r+")
-        data = json.load(file)
-        channels = data["channels"]
-        pings = data["pings"]
-
-        if op == "addmychannel":
-            if utils.is_mod(self, user, channel):
-
-                if not channel["name"] in channels:
-                    channels.append(channel)
-                    data["channels"] = channels
-                    file.seek(0)
-                    file.truncate()
-                    json.dump(data, file, indent=4)
-                else:
-                    self.send_message("FeelsDankMan Channel already added.", channel["name"])
-
-        if op == "removemychannel":
-            if utils.is_mod(self, user, channel):
-                if channel["name"] in channels:
-                    channels.remove(channel)
-                    data["channels"] = channels
-                    del pings[channel]
-                    data["pings"] = pings
-                    file.seek(0)
-                    file.truncate()
-                    json.dump(data, file, indent=4)
-                else:
-                    self.send_message("FeelsDankMan Channel not added.")
+    if cmd == "hydrate" or cmd in ALIAS["hydrate"]:
+        hydrate.cmd(self, user, channel, args)
 
     if cmd == "subage" or cmd in ALIAS["subage"]:
         try:
@@ -216,7 +183,7 @@ def perform(self, cxn, tags, user, channel, cmd, *args):
     for command in cmds:
         if cmd in command.callables:
             if time() >= command.next_use:
-                command.func(self, channel)
+                command.func(self, user, channel)
                 command.next_use = time() + command.cooldown
             else:
                 self.send_message(f"Cooldown still in effect. Try again in {command.next_use-time():,.0f} seconds.", channel["name"])
