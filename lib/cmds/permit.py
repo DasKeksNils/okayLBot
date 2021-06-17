@@ -50,4 +50,4 @@ def cmd(self, user, channel, args):
         json.dump(data, file, indent=4)
         self.send_message(f"@{user['name']}, {permit_user} permit removed. ApuApproved", channel["name"])
     else:
-        self.send_message("FeelsDankMan Not Found", channel["name"])
+        self.send_message("FeelsDankMan Argument Not Found", channel["name"])

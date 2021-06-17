@@ -1,4 +1,5 @@
 import json
+import requests
 
 
 def is_owner(self, user, channel):
@@ -32,3 +33,12 @@ def is_admin(self, user):
     data = json.load(file)
     print(data)
     return user["name"].lower() in data or user["id"] == self.channel_id
+
+
+class Get(object):
+    def __init__(self, client_id, token):
+        self.headers = {"Client-ID": client_id, "Accept": "application/vnd.twitchtv.v5+json",
+                   "Authorization": f"OAuth {token}", "Content-Type": "application/json"}
+
+    def get(self, ob):
+        return requests.get(f"https://api.twitch.tv/kraken/{ob}", headers=self.headers).json()

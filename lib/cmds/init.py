@@ -21,6 +21,7 @@ from lib.cmds import cock
 from lib.cmds import user_cmds
 from lib.cmds import hydrate
 from lib.cmds import say
+from lib.cmds import logs
 
 
 PREFIX = setup.startup()["PREFIX"]
@@ -158,11 +159,17 @@ def perform(self, cxn, tags, user, channel, cmd, *args):
         self.send_message(f"@{user['name']} the Kock is 160cm long HandsUp", channel["name"])
 
     if cmd == "say" or cmd in ALIAS["say"]:
-        if utils.is_admin(self, user):
-            say.cmd(self, channel, args)
+        if utils.is_permited(self, user):
+            say.cmd(self, args)
 
     if cmd == "hydrate" or cmd in ALIAS["hydrate"]:
         hydrate.cmd(self, user, channel, args)
+
+    if cmd == "logs" or cmd in ALIAS["logs"]:
+        logs.cmd(self, user, channel, args)
+
+    if cmd == "google" or cmd in ALIAS["google"]:
+        self.send_message(f"{user['name']}, https://www.google.com/search?q={'+'.join(args)}", channel["name"])
 
     if cmd == "subage" or cmd in ALIAS["subage"]:
         try:

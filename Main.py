@@ -7,6 +7,7 @@ import time
 import logging as log
 from lib.cmds import init, auto_msg
 from lib.data import setup
+from lib.cmds import utils
 from threading import Thread
 log.basicConfig(level=log.INFO, filename="lib/data/log.log")
 
@@ -26,6 +27,8 @@ class Bot(SingleServerIRCBot):
         self.TOKEN = setup.startup()["token"]
         self.SETUP = setup
         self.START = False
+        uget = utils.Get(self.CLIENT_ID, self.TOKEN)
+        self.get = uget.get
 
         url = f"https://api.twitch.tv/kraken/users?login={self.USERNAME}"
         headers = {"Client-ID": self.CLIENT_ID, "Accept": "application/vnd.twitchtv.v5+json"}
@@ -89,7 +92,10 @@ def hydrate(self):
                 channels = data["channels"]
                 pings = data["pings"]
                 for channel in channels:
-                    self.send_message("FeelsOkayMan Stay Hydrated Chat DinkDank " + " ".join(pings[channel]), channel)
+                    resp = self.get(f"users?login={channel[1:]}")
+                    resp = self.get(f"streams/{resp['users'][0]['_id']}")
+                    if not resp['stream'] is None:
+                        self.send_message("FeelsOkayMan Stay Hydrated Chat DinkDank " + " ".join(pings[channel]), channel)
                 next_ping = time.time() + 1800
                 data["next_ping"] = next_ping
                 file.seek(0)

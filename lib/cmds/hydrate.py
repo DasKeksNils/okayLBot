@@ -62,7 +62,7 @@ def cmd(self, user, channel, args):
         if channel["name"] in channels:
             ping_channel = pings[channel["name"]]
             if user["name"].lower() in ping_channel:
-                if user["name"].lower() == "sentimox" and channel["id"] == "439341700":
+                if user["id"] == "489167137" and channel["id"] == "439341700":
                     self.send_message("Yo moritz einfach nein :)", channel["name"])
                     return
                 ping_channel.remove(user["name"].lower())

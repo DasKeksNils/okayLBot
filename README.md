@@ -33,11 +33,13 @@
 |followage  |/   |user or channel, user   | 0   |/   | testing |
 |game   |/   |user   |0   |/   | / |
 |github | / | /     | 0   | /  | / |
+|google | text | / | 0 | / | / |
 |hydrate | pingme/remping | / | 0 | / | channel must be added |
 |hydrate | add-/remmychannel | / | 1 | / | / |
 |ispartner | / | channel | 0 | / | / |
 |join   |channel   |/   |2   |/   | / |
 |kock | / | user | 0 | / | only in #me_kc |
+|logs |user | channel | 0 | / | logs from logs.ivr.fi |
 |massping | text | / | 3 | / | / |
 |me   |wahrheit/pflicht/drunk   |/   |4   |/   | only in #me_kc |
 |module   |module   |/   |4   |/   | / |
@@ -46,7 +48,7 @@
 |permit   |add/remove/list, user   |/   |5   |/   | / |
 |ping   |/   |/   |1   |/   | / |
 |pyramid   |number, text   |/   |1   |/   | / |
-|say | channel, text | / | 5 | / | / |
+|say | channel, text | / | 4 | / | / |
 |seteditgame | game | / | 4 | / | bot needs editor; sets raw input|
 |setgame | game | / | 1 | / | bot needs editor|
 |settitle | title | / | 1 | / | bot needs editor|
@@ -56,3 +58,10 @@
 |title   |/   |user   |0   |/   | / |
 |vanish| / | / | 0 | / | / |
 |viewer | / | user | 0 | / | shows viewercount |
+
+
+## Stay Hydrated Bot
+
+This module sends a "Stay Hydrated" message to all added channels.
+You can add a channel as mod (view commands).
+This message will sended all 30min (except offchats).
