@@ -1,6 +1,6 @@
 import json
 from requests import get, put, post
-from time import time
+import time
 
 from lib.data import setup
 from lib.cmds import channel_cmd
@@ -22,7 +22,7 @@ from lib.cmds import user_cmds
 from lib.cmds import hydrate
 from lib.cmds import say
 from lib.cmds import logs
-
+from lib.cmds import channelpoints
 
 PREFIX = setup.startup()["PREFIX"]
 
@@ -32,7 +32,7 @@ class Cmd(object):
         self.callables = callables
         self.func = func
         self.cooldown = cooldown
-        self.next_use = time()
+        self.next_use = time.time()
 
 
 def test(self, user, channel):
@@ -187,12 +187,16 @@ def perform(self, cxn, tags, user, channel, cmd, *args):
         resp = get(f"https://api.ivr.fi/twitch/subage/{user1}/{channel1}").json()
         print(resp)
 
+    if cmd == "channelpoints" or cmd in ALIAS["channelpoints"]:
+        if utils.is_mod(self, user, channel):
+            channelpoints.cmd(self, user, channel, args)
+
     for command in cmds:
         if cmd in command.callables:
-            if time() >= command.next_use:
+            if time.time() >= command.next_use:
                 command.func(self, user, channel)
-                command.next_use = time() + command.cooldown
+                command.next_use = time.time() + command.cooldown
             else:
-                self.send_message(f"Cooldown still in effect. Try again in {command.next_use-time():,.0f} seconds.", channel["name"])
+                self.send_message(f"Cooldown still in effect. Try again in {command.next_use-time.time():,.0f} seconds.", channel["name"])
 
             return

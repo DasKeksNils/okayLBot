@@ -3,9 +3,22 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/daskeksnils/okayLBot/badge/main)](https://www.codefactor.io/repository/github/daskeksnils/okayLBot/overview/main)
 ![MIT LICENS](https://camo.githubusercontent.com/addaf52c6b92a0a6766d931fa5fd0344b569429efeacb8c128d170527d2e221c/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f50686f656e697847616d65732d50686f656e69782f5363726970744465636b)
 
+## Info
+
+This is a Twitch Bot from DasKeksNils. If you want this bot in your channel, please write a twitch dm to @DasKeksNils.
+The bot is only working if I have my pc on, but I work on it to get a rasbary pi to run it FeelsOkayMan
+
+---
+## Stay Hydrated Bot
+
+This module sends a "Stay Hydrated" message to all added channels.
+You can add a channel as mod (view commands).
+This message will sended avery 30min to all onchats.
+
+---
 ## Commands:
 
- ### Permission levels:
+### Permission levels:
 
  0 -All Users
 
@@ -30,6 +43,7 @@
 |cock | / | user | 0  | / | / |
 |color | / | / | 0 | / | still working on it |
 |commands   |/   |user   |0   |/   | / |
+|channelpoints | action | / | 1 | / | only in #me_kc
 |followage  |/   |user or channel, user   | 0   |/   | testing |
 |game   |/   |user   |0   |/   | / |
 |github | / | /     | 0   | /  | / |
@@ -59,9 +73,3 @@
 |vanish| / | / | 0 | / | / |
 |viewer | / | user | 0 | / | shows viewercount |
 
-
-## Stay Hydrated Bot
-
-This module sends a "Stay Hydrated" message to all added channels.
-You can add a channel as mod (view commands).
-This message will sended all 30min (except offchats).
