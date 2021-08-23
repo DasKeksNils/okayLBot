@@ -5,15 +5,14 @@
 
 ## Info
 
-This is a Twitch Bot from DasKeksNils. If you want this bot in your channel, please write a twitch dm to @DasKeksNils.
-The bot is only working if I have my pc on, but I work on it to get a rasbary pi to run it FeelsOkayMan
+This is a Twitch Bot from DasKeksNils. If you want this bot in your channel, please write a twitch dm to @DasKeksNils okayL
 
 ---
 ## Stay Hydrated Bot
 
-This module sends a "Stay Hydrated" message to all added channels.
-You can add a channel as mod (view commands).
-This message will sended avery 30min to all onchats.
+This module sends a "Stay Hydrated" message with cutsom pings to all added channels.
+You can add a channel as mod from the channel (view commands).
+This message will sended every 30min to all onchats.
 
 ---
 ## Commands:
@@ -36,14 +35,17 @@ This message will sended avery 30min to all onchats.
 
 ------
 
+###Prefix: *
+
 |COMMAND   |REQUIRED ARGUMENTS   | OPTIONAL ARGUMENTS   | PERMISSION LEVEL   |COOLDOWN   | NOTES |
 |---|---|---|---|---| --- |
 |alias  |add/remove/list   |command; alias(es)   | 0  | /  | / |
+|channelpoints | action | / | 1 | / | only in #me_kc
 |channels   |/   |/   |0,5   |/   | / |
 |cock | / | user | 0  | / | / |
 |color | / | / | 0 | / | still working on it |
 |commands   |/   |user   |0   |/   | / |
-|channelpoints | action | / | 1 | / | only in #me_kc
+|coinflip | / | / | 0 | / | / |
 |followage  |/   |user or channel, user   | 0   |/   | testing |
 |game   |/   |user   |0   |/   | / |
 |github | / | /     | 0   | /  | / |
@@ -68,8 +70,10 @@ This message will sended avery 30min to all onchats.
 |settitle | title | / | 1 | / | bot needs editor|
 |spam   |number, text   |/   |1   |/   | / |
 |subage | / | user/ channel, user | 5 | / | testing |
+|stalk | user | channel | 0 | / | is in viewerlist |
 |test |/ | / | 4 | 15 | testing cooldown |
 |title   |/   |user   |0   |/   | / |
+|uptime | / | / | 0 | / | uptime from bot |
 |vanish| / | / | 0 | / | / |
 |viewer | / | user | 0 | / | shows viewercount |
 
