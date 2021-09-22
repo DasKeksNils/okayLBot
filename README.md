@@ -7,6 +7,8 @@
 
 This is a Twitch Bot from DasKeksNils. If you want this bot in your channel, please write a twitch dm to @DasKeksNils okayL
 
+#### I do no longer pushing code to GitHub
+
 ---
 ## Stay Hydrated Bot
 
