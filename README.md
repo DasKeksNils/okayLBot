@@ -40,10 +40,11 @@ This message will sended every 30min to all onchats.
 |COMMAND   |REQUIRED ARGUMENTS   | OPTIONAL ARGUMENTS   | PERMISSION LEVEL   |COOLDOWN   | NOTES |
 |---|---|---|---|---| --- |
 |alias  |add/remove/list   |command; alias(es)   | 0  | /  | / |
+|ban_bots | / | / | 1 | / | experimental; bans ip grabber |
 |channelpoints | action | / | 1 | / | only in #me_kc
 |channels   |/   |/   |0,5   |/   | / |
 |cock | / | user | 0  | / | / |
-|color | / | / | 0 | / | still working on it |
+|color | / | / | 0 | / | / |
 |commands   |/   |user   |0   |/   | / |
 |coinflip | / | / | 0 | / | / |
 |followage  |/   |user or channel, user   | 0   |/   | testing |
