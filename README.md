@@ -62,7 +62,6 @@ This message will sended every 30min to all onchats.
 |massping | text | / | 3 | / | / |
 |me   |wahrheit/pflicht/drunk   |/   |4   |/   | only in #me_kc |
 |module   |module   |/   |4   |/   | / |
-|onlyfans   |/   |user   |0   |/   | / |
 |part   |channel   |/   |2   |/   | / |
 |permit   |add/remove/list, user   |/   |5   |/   | / |
 |ping   |/   |/   |1   |/   | / |
